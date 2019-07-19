@@ -1,0 +1,122 @@
+{
+  "message": "received event",
+  "resource": "/",
+  "path": "/",
+  "httpMethod": "POST",
+  "headers": {
+      "Accept-Encoding": "gzip,deflate",
+      "CloudFront-Forwarded-Proto": "https",
+      "CloudFront-Is-Desktop-Viewer": "true",
+      "CloudFront-Is-Mobile-Viewer": "false",
+      "CloudFront-Is-SmartTV-Viewer": "false",
+      "CloudFront-Is-Tablet-Viewer": "false",
+      "CloudFront-Viewer-Country": "US",
+      "Content-Type": "text/plain; charset=UTF-8",
+      "Host": "xq0vdmzu97.execute-api.us-east-1.amazonaws.com",
+      "User-Agent": "Amazon Simple Notification Service Agent",
+      "Via": "1.1 e9a0863c3aa85d921b20ebfa4cdea5e4.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Id": "ztA3LiviIlLWN8mDw2fkfd0L_mKIG747hecRv0jbU_v-Z4WkkmurjQ==",
+      "x-amz-sns-message-id": "c12923a6-baea-4282-811a-3c78836c2d8b",
+      "x-amz-sns-message-type": "SubscriptionConfirmation",
+      "x-amz-sns-topic-arn": "arn:aws:sns:us-east-1:374852340823:SendMeToApiGateway",
+      "X-Amzn-Trace-Id": "Root=1-5d31d81c-bd346496e3b1c528ed3d9176",
+      "X-Forwarded-For": "72.21.217.9, 70.132.59.98",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https"
+  },
+  "multiValueHeaders": {
+      "Accept-Encoding": [
+          "gzip,deflate"
+      ],
+      "CloudFront-Forwarded-Proto": [
+          "https"
+      ],
+      "CloudFront-Is-Desktop-Viewer": [
+          "true"
+      ],
+      "CloudFront-Is-Mobile-Viewer": [
+          "false"
+      ],
+      "CloudFront-Is-SmartTV-Viewer": [
+          "false"
+      ],
+      "CloudFront-Is-Tablet-Viewer": [
+          "false"
+      ],
+      "CloudFront-Viewer-Country": [
+          "US"
+      ],
+      "Content-Type": [
+          "text/plain; charset=UTF-8"
+      ],
+      "Host": [
+          "xq0vdmzu97.execute-api.us-east-1.amazonaws.com"
+      ],
+      "User-Agent": [
+          "Amazon Simple Notification Service Agent"
+      ],
+      "Via": [
+          "1.1 e9a0863c3aa85d921b20ebfa4cdea5e4.cloudfront.net (CloudFront)"
+      ],
+      "X-Amz-Cf-Id": [
+          "ztA3LiviIlLWN8mDw2fkfd0L_mKIG747hecRv0jbU_v-Z4WkkmurjQ=="
+      ],
+      "x-amz-sns-message-id": [
+          "c12923a6-baea-4282-811a-3c78836c2d8b"
+      ],
+      "x-amz-sns-message-type": [
+          "SubscriptionConfirmation"
+      ],
+      "x-amz-sns-topic-arn": [
+          "arn:aws:sns:us-east-1:374852340823:SendMeToApiGateway"
+      ],
+      "X-Amzn-Trace-Id": [
+          "Root=1-5d31d81c-bd346496e3b1c528ed3d9176"
+      ],
+      "X-Forwarded-For": [
+          "72.21.217.9, 70.132.59.98"
+      ],
+      "X-Forwarded-Port": [
+          "443"
+      ],
+      "X-Forwarded-Proto": [
+          "https"
+      ]
+  },
+  "queryStringParameters": null,
+  "multiValueQueryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+      "resourceId": "wsvd1xe0n9",
+      "resourcePath": "/",
+      "httpMethod": "POST",
+      "extendedRequestId": "dE60gFIaoAMFwzQ=",
+      "requestTime": "19/Jul/2019:14:47:56 +0000",
+      "path": "/dev/",
+      "accountId": "374852340823",
+      "protocol": "HTTP/1.1",
+      "stage": "dev",
+      "domainPrefix": "xq0vdmzu97",
+      "requestTimeEpoch": 1563547676888,
+      "requestId": "32353677-aa34-11e9-bc12-a5a1bd4580c4",
+      "identity": {
+          "cognitoIdentityPoolId": null,
+          "accountId": null,
+          "cognitoIdentityId": null,
+          "caller": null,
+          "sourceIp": "72.21.217.9",
+          "principalOrgId": null,
+          "accessKey": null,
+          "cognitoAuthenticationType": null,
+          "cognitoAuthenticationProvider": null,
+          "userArn": null,
+          "userAgent": "Amazon Simple Notification Service Agent",
+          "user": null
+      },
+      "domainName": "xq0vdmzu97.execute-api.us-east-1.amazonaws.com",
+      "apiId": "xq0vdmzu97"
+  },
+  "body": "{\n  \"Type\" : \"SubscriptionConfirmation\",\n  \"MessageId\" : \"c12923a6-baea-4282-811a-3c78836c2d8b\",\n  \"Token\" : \"2336412f37fb687f5d51e6e241dbca52e8c26154f1f0daba7b1689eec12fe32b33fe702e6f2d9169094c3d890de070aa17176f3b01229d378577d72a377fc60a3bc32925bf5f4c238e41aaf283c1a6b4375fead73194302ef556bd17d4f7b06fc70f88dbc4f05b00914702ca5fd4269d2d14eb733ac3dd6376c283f7ec0ccdc8\",\n  \"TopicArn\" : \"arn:aws:sns:us-east-1:374852340823:SendMeToApiGateway\",\n  \"Message\" : \"You have chosen to subscribe to the topic arn:aws:sns:us-east-1:374852340823:SendMeToApiGateway.\\nTo confirm the subscription, visit the SubscribeURL included in this message.\",\n  \"SubscribeURL\" : \"https://sns.us-east-1.amazonaws.com/?Action=ConfirmSubscription&TopicArn=arn:aws:sns:us-east-1:374852340823:SendMeToApiGateway&Token=2336412f37fb687f5d51e6e241dbca52e8c26154f1f0daba7b1689eec12fe32b33fe702e6f2d9169094c3d890de070aa17176f3b01229d378577d72a377fc60a3bc32925bf5f4c238e41aaf283c1a6b4375fead73194302ef556bd17d4f7b06fc70f88dbc4f05b00914702ca5fd4269d2d14eb733ac3dd6376c283f7ec0ccdc8\",\n  \"Timestamp\" : \"2019-07-19T14:47:56.826Z\",\n  \"SignatureVersion\" : \"1\",\n  \"Signature\" : \"UxgY/pzsXo/nZnXIZ/Y8syyTmx4iuPX3AdMVRspKDNLY08B5ySWcSie/SaIQAiGhHDWRG1wHprbudjwZWvPtVglm/8lH3+DMF6bNZVbK5I0zEr3uS1JTmOscNUk1ZtkoL1ATwIDWFSjI/rIGqY/MP1Uul8hQ0OtlfzYMReeC4QJdjDtTVbdgghNQyeAbGUPy1HfhtrQYGqDWYyYIDzEfZhvdqoA9D6mJ99u75y/Ox1LocR790bMNLBnEZGp4SMwHgAWjsTX3QN3QoWoUWlNQaKt90fuOrOtVWul8gMZ7U51he33YE8lcompesCBn99WMXLz+G2uEZlYITJyCySkGNw==\",\n  \"SigningCertURL\" : \"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-6aad65c2f9911b05cd53efda11f913f9.pem\"\n}",
+  "isBase64Encoded": false  
+}

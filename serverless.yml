@@ -1,0 +1,51 @@
+service: sns-to-apigw-demo
+
+plugins:
+  - serverless-apigateway-service-proxy
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+custom:
+  apiGatewayServiceProxies:
+    - kinesis:
+        path: /kinesis
+        method: post
+        streamName: { Ref: 'MyStream' }
+        cors: true
+
+# #set($msgBody = $util.parseJson($input.body))
+# #set($msgId = $msgBody.MessageId)
+# {
+#     "Data": "$util.base64Encode($input.body)",
+#     "PartitionKey": "$msgId",
+#     "StreamName": "sns-to-apigw-demo-dev-MyStream-RZBM6QXES72J"
+# }
+
+functions:
+  api-gw:
+    handler: functions/apigw.handler
+    events:
+      - http:
+          path: /
+          method: post
+  
+  kinesis:
+    handler: functions/kinesis.handler
+    events:
+      - stream:
+          type: kinesis
+          arn:
+            Fn::GetAtt: [MyStream, Arn]
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    Topic:
+      Type: AWS::SNS::Topic
+
+    MyStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        ShardCount: 1
