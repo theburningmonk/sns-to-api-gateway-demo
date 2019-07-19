@@ -15,6 +15,13 @@ custom:
         streamName: { Ref: 'MyStream' }
         cors: true
 
+# after the API Gateway resource is deployed, you need to go to the API Gateway console
+# find the API, go to resources, click on the POST action for the /kinesis resource
+# go to "Integration Request", under "Mapping Templates", add a new mapping for `text/plain`
+# because when SNS sends messages to HTTP endpoints it sends `text/plain` as content-type
+# then you need to add the following VTL code (and change the stream name to match your stream)
+# save changes, and then redeploy the API to your stage
+
 # #set($msgBody = $util.parseJson($input.body))
 # #set($msgId = $msgBody.MessageId)
 # {
