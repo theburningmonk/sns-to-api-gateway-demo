@@ -21,7 +21,6 @@ custom:
         path: /kinesis
         method: post
         streamName: { Ref: 'MyStream' }
-        cors: true
         request:
           template:
             text/plain: 
