@@ -14,21 +14,16 @@ custom:
         method: post
         streamName: { Ref: 'MyStream' }
         cors: true
-
-# after the API Gateway resource is deployed, you need to go to the API Gateway console
-# find the API, go to resources, click on the POST action for the /kinesis resource
-# go to "Integration Request", under "Mapping Templates", add a new mapping for `text/plain`
-# because when SNS sends messages to HTTP endpoints it sends `text/plain` as content-type
-# then you need to add the following VTL code (and change the stream name to match your stream)
-# save changes, and then redeploy the API to your stage
-
-# #set($msgBody = $util.parseJson($input.body))
-# #set($msgId = $msgBody.MessageId)
-# {
-#     "Data": "$util.base64Encode($input.body)",
-#     "PartitionKey": "$msgId",
-#     "StreamName": "sns-to-apigw-demo-dev-MyStream-RZBM6QXES72J"
-# }
+        request:
+          template:
+            text/plain: | 
+              #set($msgBody = $util.parseJson($input.body))
+              #set($msgId = $msgBody.MessageId)
+              {
+                  "Data": "$util.base64Encode($input.body)",
+                  "PartitionKey": "$msgId",
+                  "StreamName": "my-stream"
+              }
 
 functions:
   api-gw:
@@ -55,4 +50,5 @@ resources:
     MyStream:
       Type: AWS::Kinesis::Stream
       Properties:
+        Name: my-stream
         ShardCount: 1
