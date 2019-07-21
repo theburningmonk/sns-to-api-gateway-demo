@@ -2,10 +2,18 @@ service: sns-to-apigw-demo
 
 plugins:
   - serverless-apigateway-service-proxy
+  - serverless-cloudformation-sub-variables
 
 provider:
   name: aws
   runtime: nodejs10.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action: lambda:ListEventSourceMappings
+      Resource: '*'
+    - Effect: Allow
+      Action: lambda:UpdateEventSourceMapping
+      Resource: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:event-source-mapping:*
 
 custom:
   apiGatewayServiceProxies:
@@ -16,14 +24,18 @@ custom:
         cors: true
         request:
           template:
-            text/plain: | 
-              #set($msgBody = $util.parseJson($input.body))
-              #set($msgId = $msgBody.MessageId)
-              {
-                  "Data": "$util.base64Encode($input.body)",
-                  "PartitionKey": "$msgId",
-                  "StreamName": "my-stream"
-              }
+            text/plain: 
+              Fn::Sub:
+                - | 
+                  #set($msgBody = $util.parseJson($input.body))
+                  #set($msgId = $msgBody.MessageId)
+                  {
+                      "Data": "$util.base64Encode($input.body)",
+                      "PartitionKey": "$msgId",
+                      "StreamName": "#{MyStreamArn}"
+                  }
+                - MyStreamArn:
+                    Fn::GetAtt: [MyStream, Arn]
 
 functions:
   api-gw:
@@ -35,6 +47,9 @@ functions:
   
   kinesis:
     handler: functions/kinesis.handler
+    environment:
+      KINESIS_ARN:
+        Fn::GetAtt: [MyStream, Arn]
     events:
       - stream:
           type: kinesis
