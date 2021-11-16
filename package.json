@@ -6,7 +6,7 @@
   "dependencies": {
     "@perform/lambda-powertools-logger": "^1.8.0",
     "@perform/lambda-powertools-pattern-basic": "^1.8.0",
-    "aws-sdk": "^2.496.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.19.0"
   },
   "devDependencies": {
